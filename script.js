@@ -3,6 +3,7 @@ $(document).ready(onReady);
 
 // declare state variables
 let employees = [];
+let totalCosts = 0;
 
 function onReady() {
   //EVENTS: event listeners
@@ -27,12 +28,17 @@ function onSubmit(evt) {
   // push that object to the employees array
   employees.push(newEmployee);
 
-  // render the most recently added employee
-  renderEmployee(newEmployee);
-
   // clear the input fields
   // accessing all input fields and excepting the button using ':' operator
   $("input:not(#submit-btn)").val("");
+
+  // add employee's salary to the total cost
+  totalCosts += Number(newEmployee.annualSalary);
+
+  // render the most recently added employee
+  renderEmployee(newEmployee);
+
+  renderCosts();
 }
 
 // render state changes to the DOM
@@ -40,8 +46,11 @@ function render() {
   for (let employee of employees) {
     renderEmployee(employee);
   }
+  // render total costs
+  renderCosts();
 }
 
+// render individual employee to DOM
 function renderEmployee(employee) {
   $("#employee-table").append(
     `<tr>
@@ -52,4 +61,9 @@ function renderEmployee(employee) {
         <td>${employee.annualSalary}</td>
     </tr>`
   );
+}
+
+// render total cost to DOM
+function renderCosts() {
+  $("#total-costs").text(`Total costs: ${totalCosts}`);
 }
