@@ -47,6 +47,9 @@ function onDeleteEmployee() {
   // button  <td>   <tr>
   const employeeIndex = $(this).parent().parent().index() - 1;
 
+  // remove employee salary from total cost
+  totalCosts -= employees[employeeIndex].annualSalary;
+
   // remove employee from state array
   employees.splice(employeeIndex, 1);
 
@@ -89,5 +92,7 @@ function renderCosts() {
   $("#total-costs").text(`Total costs: $${totalCosts.toLocaleString("en-US")}`);
   if (totalCosts > 20000) {
     $("#total-costs").css("background-color", "#ec092f");
+  } else {
+    $("#total-costs").css("background-color", "transparent");
   }
 }
