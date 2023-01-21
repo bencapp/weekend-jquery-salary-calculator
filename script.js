@@ -5,6 +5,7 @@ $(document).ready(onReady);
 let employees = [];
 let totalCosts = 0;
 let over20K = false;
+let oopsMessage = false;
 
 function onReady() {
   //EVENTS: event listeners
@@ -18,6 +19,34 @@ function onReady() {
 function onAddEmployee(evt) {
   // prevent default behavior of submit button
   evt.preventDefault();
+
+  // check if all fields have been filled;
+  // if not, render an error message and return
+  if (
+    !$("#first-input").val() ||
+    !$("#last-input").val() ||
+    !$("#ID-input").val() ||
+    !$("#job-input").val() ||
+    !$("#salary-input").val()
+  ) {
+    // check if the error message is already there
+    if (!oopsMessage) {
+      //render error message
+      oopsMessage = true;
+      $("form").after(
+        `<p id="error-message">Oops! Fill out all fields to add an employee.</p>`
+      );
+      // after 2 seconds, remove the message.
+      setTimeout(function () {
+        $("#error-message").remove();
+        oopsMessage = false;
+      }, 2000);
+    }
+
+    // return so the rest of onAddEmployee does not run
+    return;
+  }
+
   // access input values and place them in a new object
   const newEmployee = {
     firstName: $("#first-input").val(),
@@ -90,7 +119,9 @@ function renderEmployee(employee) {
 function renderCosts() {
   // toLocaleString method converts the integer to a string
   // and adds commas
-  $("#total-costs").text(`Total costs: $${totalCosts.toLocaleString("en-US")}`);
+  $("#total-costs").text(
+    `Total annual cost: $${totalCosts.toLocaleString("en-US")}`
+  );
 
   // check whether to highlight total cost indicator
   // and add corresponding text
