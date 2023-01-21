@@ -26,7 +26,13 @@ function onSubmit(evt) {
 
   // push that object to the employees array
   employees.push(newEmployee);
+
+  // render the most recently added employee
   renderEmployee(newEmployee);
+
+  // clear the input fields
+  // accessing all input fields and excepting the button using ':' operator
+  $("input:not(#submit-btn)").val("");
 }
 
 // render state changes to the DOM
