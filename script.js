@@ -4,6 +4,7 @@ $(document).ready(onReady);
 // declare state variables
 let employees = [];
 let totalCosts = 0;
+let over20K = false;
 
 function onReady() {
   //EVENTS: event listeners
@@ -90,9 +91,18 @@ function renderCosts() {
   // toLocaleString method converts the integer to a string
   // and adds commas
   $("#total-costs").text(`Total costs: $${totalCosts.toLocaleString("en-US")}`);
+
+  // check whether to highlight total cost indicator
+  // and add corresponding text
   if (totalCosts > 20000) {
     $("#total-costs").css("background-color", "#ec092f");
+    if (!over20K) {
+      $("#total-costs").after(`<p id="a-lot-text">That's a lot of money!</p>`);
+      over20K = true;
+    }
   } else {
     $("#total-costs").css("background-color", "transparent");
+    $("#a-lot-text").remove();
+    over20K = false;
   }
 }

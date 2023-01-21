@@ -3,6 +3,7 @@
   --color-1: #116165;
   --color-2: #0b3948;
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: large;
 }
 
 body {
@@ -17,8 +18,9 @@ body {
 form {
   background-color: var(--color-2);
   padding: 10px 20px 10px 20px;
-  height: 210px;
+  height: 260px;
   width: 300px;
+  border: 1px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -34,15 +36,15 @@ form {
 
 input[type="text"],
 input[type="number"] {
-  height: 15px;
+  height: 18px;
   width: 150px;
   border-radius: 3px;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-  border: 2px solid var(--color-1);
+  border: 1px solid var(--color-1);
   outline: none;
 }
 
@@ -52,19 +54,43 @@ input[type="number"]:focus {
   /* padding: 10px 0px 5px 0px; */
 }
 
+input[type="submit"],
+button {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 #submit-btn {
   height: 30px;
   width: 60px;
 }
 
 /* table styling */
-#employee-table {
+#table-container {
   background-color: var(--color-2);
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   margin: 10px;
+  padding: 20px;
 }
 
-#employee-table > * {
-  border: 2px solid black;
+#employee-table {
+  border-collapse: collapse;
+}
+
+tr,
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0px;
+}
+
+/* total costs styling */
+#total-costs {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#a-lot-text {
+  margin: 0px;
 }
