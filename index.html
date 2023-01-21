@@ -8,5 +8,41 @@
     <script src="./script.js"></script>
     <title>💸 Salaries</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Employee Salary Calculator</h1>
+    <form>
+      <div>
+        <label for="first-input">First Name: </label>
+        <input id="first-input" type="text" placeholder="John" />
+      </div>
+      <div>
+        <label for="last-input">Last Name: </label>
+        <input id="last-input" type="text" placeholder="Doe" />
+      </div>
+      <div>
+        <label for="ID-input">ID Number: </label>
+        <input id="ID-input" type="text" placeholder="1234" />
+      </div>
+      <div>
+        <label for="job-input">Job Title: </label>
+        <input id="job-input" type="text" placeholder="Accountant" />
+      </div>
+      <div>
+        <label for="salary-input">Annual Salary: </label>
+        <input id="salary-input" type="text" placeholder="53000" />
+      </div>
+      <!-- submit button: remember to preventDefault in JS file -->
+      <div><input id="submit-btn" type="submit" /></div>
+    </form>
+    <table>
+      <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Salary</th>
+      </tr>
+      <!-- append new rows here -->
+    </table>
+  </body>
 </html>
