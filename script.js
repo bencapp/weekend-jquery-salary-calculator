@@ -24,9 +24,26 @@ function onSubmit(evt) {
     annualSalary: $("#salary-input").val(),
   };
 
-  console.log(newEmployee);
   // push that object to the employees array
+  employees.push(newEmployee);
+  renderEmployee(newEmployee);
 }
 
 // render state changes to the DOM
-function render() {}
+function render() {
+  for (let employee of employees) {
+    renderEmployee(employee);
+  }
+}
+
+function renderEmployee(employee) {
+  $("#employee-table").append(
+    `<tr>
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.employeeID}</td>
+        <td>${employee.jobTitle}</td>
+        <td>${employee.annualSalary}</td>
+    </tr>`
+  );
+}
