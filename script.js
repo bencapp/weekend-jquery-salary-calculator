@@ -7,13 +7,14 @@ let totalCosts = 0;
 
 function onReady() {
   //EVENTS: event listeners
-  $(document).on("click", "#submit-btn", onSubmit);
+  $(document).on("click", "#submit-btn", onAddEmployee);
+  $(document).on("click", ".delete-employee", onDeleteEmployee);
 
   render();
 }
 
-// creates a new employee object and renders the page
-function onSubmit(evt) {
+// creates a new employee object
+function onAddEmployee(evt) {
   // prevent default behavior of submit button
   evt.preventDefault();
   // access input values and place them in a new object
@@ -41,6 +42,21 @@ function onSubmit(evt) {
   renderCosts();
 }
 
+function onDeleteEmployee() {
+  // update state
+  // button  <td>   <tr>
+  const employeeIndex = $(this).parent().parent().index() - 1;
+
+  // remove employee from state array
+  employees.splice(employeeIndex, 1);
+
+  // render all employees and the updated cost
+  // clearing array here, because I only need to reset the full
+  // DOM table when deleting
+  $(".employee-line").remove();
+  render();
+}
+
 // render state changes to the DOM
 function render() {
   for (let employee of employees) {
@@ -53,12 +69,15 @@ function render() {
 // render individual employee to DOM
 function renderEmployee(employee) {
   $("#employee-table").append(
-    `<tr>
+    `<tr class="employee-line">
         <td>${employee.firstName}</td>
         <td>${employee.lastName}</td>
         <td>${employee.employeeID}</td>
         <td>${employee.jobTitle}</td>
         <td>$${employee.annualSalary.toLocaleString("en-US")}</td>
+        <td>        
+            <button class='delete-employee'>Delete 🔴</button>
+        </td>
     </tr>`
   );
 }
