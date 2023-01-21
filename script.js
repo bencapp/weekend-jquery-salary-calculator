@@ -44,7 +44,7 @@ function onAddEmployee(evt) {
 
 function onDeleteEmployee() {
   // update state
-  // button  <td>   <tr>
+  //                     button  <td>     <tr>
   const employeeIndex = $(this).parent().parent().index() - 1;
 
   // remove employee salary from total cost

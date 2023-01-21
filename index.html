@@ -6,33 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="jquery.js"></script>
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
     <title>💸 Salaries</title>
   </head>
   <body>
     <h1>Employee Salary Calculator</h1>
     <form>
-      <div>
+      <div class="input-line">
         <label for="first-input">First Name: </label>
         <input id="first-input" type="text" placeholder="John" />
       </div>
-      <div>
+      <div class="input-line">
         <label for="last-input">Last Name: </label>
         <input id="last-input" type="text" placeholder="Doe" />
       </div>
-      <div>
+      <div class="input-line">
         <label for="ID-input">ID Number: </label>
         <input id="ID-input" type="text" placeholder="1234" />
       </div>
-      <div>
+      <div class="input-line">
         <label for="job-input">Job Title: </label>
         <input id="job-input" type="text" placeholder="Accountant" />
       </div>
-      <div>
+      <div class="input-line">
         <label for="salary-input">Annual Salary: </label>
         <input id="salary-input" type="number" placeholder="53000" />
       </div>
       <!-- submit button: remember to preventDefault in JS file -->
-      <div><input id="submit-btn" type="submit" /></div>
+      <div id="submit-container"><input id="submit-btn" type="submit" /></div>
     </form>
     <table id="employee-table">
       <tr id="table-header">
