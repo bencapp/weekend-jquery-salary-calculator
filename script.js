@@ -22,7 +22,7 @@ function onSubmit(evt) {
     lastName: $("#last-input").val(),
     employeeID: $("#ID-input").val(),
     jobTitle: $("#job-input").val(),
-    annualSalary: $("#salary-input").val(),
+    annualSalary: Number($("#salary-input").val()),
   };
 
   // push that object to the employees array
@@ -33,7 +33,7 @@ function onSubmit(evt) {
   $("input:not(#submit-btn)").val("");
 
   // add employee's salary to the total cost
-  totalCosts += Number(newEmployee.annualSalary);
+  totalCosts += newEmployee.annualSalary;
 
   // render the most recently added employee
   renderEmployee(newEmployee);
@@ -58,12 +58,17 @@ function renderEmployee(employee) {
         <td>${employee.lastName}</td>
         <td>${employee.employeeID}</td>
         <td>${employee.jobTitle}</td>
-        <td>${employee.annualSalary}</td>
+        <td>$${employee.annualSalary.toLocaleString("en-US")}</td>
     </tr>`
   );
 }
 
 // render total cost to DOM
 function renderCosts() {
-  $("#total-costs").text(`Total costs: ${totalCosts}`);
+  // toLocaleString method converts the integer to a string
+  // and adds commas
+  $("#total-costs").text(`Total costs: $${totalCosts.toLocaleString("en-US")}`);
+  if (totalCosts > 20000) {
+    $("#total-costs").css("background-color", "#ec092f");
+  }
 }
